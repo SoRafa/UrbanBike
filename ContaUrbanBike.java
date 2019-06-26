@@ -2,9 +2,9 @@ package urbanbike;
 
 public abstract class ContaUrbanBike {
 	private int numConta;
-	private double carteira;
-  	public abstract double depositarCredito(double valor);
-  	public abstract double gastarCredito(double valor);
+	protected double carteira;
+  	public abstract double depositarCredito(double saldo);
+  	public abstract double gastarCredito(double saldo);
   
 	  public int getConta(){
 		 return this.numConta;
@@ -14,11 +14,11 @@ public abstract class ContaUrbanBike {
 		  this.numConta = num;
 	  	}
 	  
-	  public double getSaldo(){
+	  public double getCarteira(){
 		  return this.carteira;
 	  	}
 			
-	  public void setSaldo(int saldo){
-		  this.carteira = saldo;
+	  public void setCarteira(int carteira){
+		  this.carteira = carteira;
 	  	}
 	}
