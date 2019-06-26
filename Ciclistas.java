@@ -1,35 +1,82 @@
 package urbanbike;
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Ciclistas implements Imprimivel{
+	
+	ArrayList<PedalPop> listaPop = new ArrayList<PedalPop>();
+	ArrayList<PedalPremium> listaPremium = new ArrayList<PedalPremium>();
+	Iterator itPop = listaPop.iterator( );
+	Iterator itPremium = listaPremium.iterator( );
 
-	public class inserir{
-		
+
+	public void inserir(){
+		listaPop.add();
+		}
+
+	public void remover(){
+		listaPop.remove();	
 	}
 	
-	public class remover{
-		
-	}
-	
-	public class procurarPedal{
-	
+	public void procurarPedal(){
+		listaPop.remove();
 	}
 	
 	@Override
 	public void mostraDados() {
-		 System.out.println("N�mero da conta: " +getConta()); 
-		 System.out.println("Valor na carteira: " +getCarteira());
+		
 		
 	}
-	public void menu() { // menu principal
+	public void menu1() { // Menu da Aplicação
 		int opcao = 0;
 		do {
 			System.out.println("\n         ========================================");
-			System.out.println("          1 - Aumentar canal        "); 
-			System.out.println("          2 - Diminuir canal      ");
-			System.out.println("          3 - Aumentar volume    ");
-			System.out.println("          4 - Diminuir volume      ");
-			System.out.println("          5 - Exibir canal e volume da televis�o ");
-			System.out.println("          0 - Sair          ");
+			System.out.println("          1 - Criar pedal        "); 
+			System.out.println("          2 - Remover Pedal      ");
+			System.out.println("          3 - Gerar relatório    ");
+			System.out.println("          4 - Selecionar Pedal      ");
+			System.out.println("          5 - Finalizar ");
+			System.out.println("          ========================================\n");			
+			Scanner scan = new Scanner(System.in);
+                        opcao = Integer.parseInt(scan.nextLine());
+			switch (opcao) {
+			case 1://debug
+				while ( itPop.hasNext( ) ) {
+					System.out.println( itPop.next( ) );
+					}
+				while ( itPremium.hasNext( ) ) {
+					System.out.println( itPremium.next( ) );
+					}
+                            ;
+			break;
+		        case 2:
+                            ;
+			break;
+		        case 3:
+                           	;
+            break;
+		        case 4:
+                           	;
+            break;
+				case 0:
+            break;
+				default:
+            System.out.println("Opção Inválida!");
+            break;
+            }
+        } while (opcao != 0);
+    }
+	
+	public void menu2() { // Menu da opção 4
+		int opcao = 0;
+		do {
+			System.out.println("\n         ========================================");
+			System.out.println("          A - Creditar        "); 
+			System.out.println("          B - Pedalar      ");
+			System.out.println("          C - Transferir    ");
+			System.out.println("          D - Gerar relatório      ");
+			System.out.println("          E - Retornar ao menu anterior ");
 			System.out.println("          ========================================\n");			
 			Scanner scan = new Scanner(System.in);
                         opcao = Integer.parseInt(scan.nextLine());
@@ -46,14 +93,10 @@ public class Ciclistas implements Imprimivel{
 		        case 4:
                            	;
             break;
-				case 5:
-							;
-			break;
 				case 0:
-                	
             break;
 				default:
-            System.out.println("Op��o Inv�lida!");
+            System.out.println("Opção Inválida!");
             break;
             }
         } while (opcao != 0);
