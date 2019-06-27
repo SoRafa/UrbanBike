@@ -16,8 +16,22 @@ public class Ciclistas implements Imprimivel{
 		}
 
 	public void remover(){
-		listaPop.remove();	
-	}
+		numero = Integer.parseInt(scan.nextLine());
+		for(int i = 0; i < listaPop.size(); i++) { 
+			while ( itPop.hasNext() ) {					//laço para pesquisar no pop
+				System.out.println(itPop.next().getConta());
+				if( itPop.next().getConta() == numero) {
+					listaPop.remove(i);
+					}
+				}
+				while ( itPremium.hasNext() ) {				//laço para pesquisar no premium
+					System.out.println(itPremium.next().getConta());
+					if( itPremium.next().getConta() == numero) {
+						listaPremium.remove(i);
+					}
+				}
+			}
+		}
 	
 	public void procurarPedal(){
 		listaPop.remove();
