@@ -21,4 +21,8 @@ public abstract class ContaUrbanBike {
 	  public void setCarteira(int carteira){
 		  this.carteira = carteira;
 	  	}
+		
+	  public void transferir(double valor, ContaUrbanBike C){
+		
+	  }
 	}
