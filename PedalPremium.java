@@ -12,8 +12,8 @@ public class PedalPremium extends ContaUrbanBike implements Imprimivel{
 	  	}
 
 	  public void mostraDados() {
-			 System.out.println("Número da conta: "+getConta()); 
-			 System.out.println("Valor na carteira: "+getCarteira()); 
+			 System.out.println("Número da conta: " +getConta()); 
+			 System.out.println("Valor na carteira: " +getCarteira()); 
 	  	}
 
 	@Override

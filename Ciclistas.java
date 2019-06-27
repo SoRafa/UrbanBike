@@ -7,53 +7,72 @@ public class Ciclistas implements Imprimivel{
 	
 	ArrayList<PedalPop> listaPop = new ArrayList<PedalPop>();
 	ArrayList<PedalPremium> listaPremium = new ArrayList<PedalPremium>();
-	Iterator itPop = listaPop.iterator( );
-	Iterator itPremium = listaPremium.iterator( );
-
-
+	Iterator<PedalPop> itPop = listaPop.iterator( );
+	Iterator<PedalPremium> itPremium = listaPremium.iterator( );
+	Scanner scan = new Scanner(System.in);
+	int numero = 0;
+	
 	public void inserir(){
+		System.out.println("digite");
+		System.out.println("");
 		listaPop.add();
 		}
 
 	public void remover(){
 		numero = Integer.parseInt(scan.nextLine());
 		for(int i = 0; i < listaPop.size(); i++) { 
-			while ( itPop.hasNext() ) {					//laÃ§o para pesquisar no pop
+			
+			while ( itPop.hasNext() ) {						//laço para pesquisar no pop
 				System.out.println(itPop.next().getConta());
 				if( itPop.next().getConta() == numero) {
 					listaPop.remove(i);
 					}
 				}
-				while ( itPremium.hasNext() ) {				//laÃ§o para pesquisar no premium
+				while ( itPremium.hasNext() ) {				//laço para pesquisar no premium
 					System.out.println(itPremium.next().getConta());
 					if( itPremium.next().getConta() == numero) {
-						listaPremium.remove(i);
+					listaPremium.remove(i);
+					}
+				}
+			}
+		}
+
+	public void procurarPedal(){
+		numero = Integer.parseInt(scan.nextLine());
+			for(int i = 0; i < listaPop.size(); i++) { 
+			
+			while ( itPop.hasNext() ) {						//laço para pesquisar no pop
+				System.out.println(itPop.next().getConta());
+				if( itPop.next().getConta() == numero) {
+					listaPop.get(i);
+					}
+				}
+				while ( itPremium.hasNext() ) {				//laço para pesquisar no premium
+					System.out.println(itPremium.next().getConta());
+					if( itPremium.next().getConta() == numero) {
+					listaPremium.get(i);
 					}
 				}
 			}
 		}
 	
-	public void procurarPedal(){
-		listaPop.remove();
-	}
-	
 	@Override
 	public void mostraDados() {
-		
-		
+			
 	}
-	public void menu1() { // Menu da AplicaÃ§Ã£o
+	
+	public void menu1() { // Menu da Aplicação
 		int opcao = 0;
 		do {
 			System.out.println("\n         ========================================");
 			System.out.println("          1 - Criar pedal        "); 
 			System.out.println("          2 - Remover Pedal      ");
-			System.out.println("          3 - Gerar relatÃ³rio    ");
+			System.out.println("          3 - Gerar relatório    ");
 			System.out.println("          4 - Selecionar Pedal      ");
 			System.out.println("          5 - Finalizar ");
 			System.out.println("          ========================================\n");			
-			Scanner scan = new Scanner(System.in);
-                        opcao = Integer.parseInt(scan.nextLine());
+				Scanner scan1 = new Scanner(System.in);
+                opcao = Integer.parseInt(scan1.nextLine());
 			switch (opcao) {
 			case 1://debug
 				while ( itPop.hasNext( ) ) {
@@ -76,24 +95,24 @@ public class Ciclistas implements Imprimivel{
 				case 0:
             break;
 				default:
-            System.out.println("OpÃ§Ã£o InvÃ¡lida!");
+            System.out.println("Opção Inválida!");
             break;
             }
         } while (opcao != 0);
     }
 	
-	public void menu2() { // Menu da opÃ§Ã£o 4
+	public void menu2() { // Menu da opção 4
 		int opcao = 0;
 		do {
 			System.out.println("\n         ========================================");
 			System.out.println("          A - Creditar        "); 
 			System.out.println("          B - Pedalar      ");
 			System.out.println("          C - Transferir    ");
-			System.out.println("          D - Gerar relatÃ³rio      ");
+			System.out.println("          D - Gerar relatório      ");
 			System.out.println("          E - Retornar ao menu anterior ");
 			System.out.println("          ========================================\n");			
-			Scanner scan = new Scanner(System.in);
-                        opcao = Integer.parseInt(scan.nextLine());
+				Scanner scan2 = new Scanner(System.in);
+            	opcao = Integer.parseInt(scan2.nextLine());
 			switch (opcao) {
 			case 1:
                             ;
@@ -110,7 +129,7 @@ public class Ciclistas implements Imprimivel{
 				case 0:
             break;
 				default:
-            System.out.println("OpÃ§Ã£o InvÃ¡lida!");
+            System.out.println("Opção Inválida!");
             break;
             }
         } while (opcao != 0);
