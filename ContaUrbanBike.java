@@ -18,7 +18,7 @@ public abstract class ContaUrbanBike {
 		  return this.carteira;
 	  	}
 			
-	  public void setCarteira(int carteira){
+	  public void setCarteira(double carteira){
 		  this.carteira = carteira;
 	  	}
 		

@@ -21,6 +21,7 @@ public class Ciclistas implements Imprimivel{
            Pedal.setCarteira(saldo);
            int i = 0; i++;
            Pedal.setConta(i);
+           listaPedais.add(Pedal);
         }
         else if(numero == 2){
            PedalPremium Pedal = new PedalPremium();
@@ -29,17 +30,16 @@ public class Ciclistas implements Imprimivel{
            Pedal.setCarteira(saldo);
            int i = 0; i++;
            Pedal.setConta(i);
+           listaPedais.add(Pedal);
         }else{
             System.out.println("Opção inválida"); 
         }
-	System.out.println("Digite a quantidade que deseja depositar:");
-	listaPedais.add();
-	}
+    }
 
-    public void remover(ContaUrbanBike c){
+    public void remover(int num){
 	while ( itPedais.hasNext() ) {                              
             System.out.println(itPedais.next().getConta());
-            if( itPedais.next() == c) {
+            if( itPedais.next().getConta() == num) {
                 listaPedais.remove(itPedais.next());
                 }
             }
@@ -51,9 +51,8 @@ public class Ciclistas implements Imprimivel{
                             System.out.println(itPedais.next().getConta());
                             return itPedais.next();
                         }
-	}
-        return null;
-    }
+                    }
+        return null;    }
 	
 	@Override
 	public void mostraDados() {
@@ -66,31 +65,30 @@ public class Ciclistas implements Imprimivel{
 			System.out.println("\n         ========================================");
 			System.out.println("          1 - Criar pedal        "); 
 			System.out.println("          2 - Remover Pedal      ");
-			System.out.println("          3 - Gerar relatório    ");
+			System.out.println("          3 - Gerar relat�rio    ");
 			System.out.println("          4 - Selecionar Pedal      ");
 			System.out.println("          5 - Finalizar ");
 			System.out.println("          ========================================\n");			
-				Scanner scan1 = new Scanner(System.in);
-                opcao = Integer.parseInt(scan1.nextLine());
+                            Scanner scan1 = new Scanner(System.in);
+                            opcao = scan1.nextInt();
 			switch (opcao) {
-			case 1://debug
-                        numero = Integer.parseInt(scan.nextLine()); 
-				while ( itPedais.hasNext( ) ) {
-					System.out.println( itPedais.next( ) );
-					}
+			case 1:
+                            inserir(); 
 			break;
 		        case 2:
-                        numero = Integer.parseInt(scan.nextLine()); 
-                            ;
+                            numero = scan.nextInt();
+                            remover(numero);
 			break;
 		        case 3:
                         numero = Integer.parseInt(scan.nextLine()); 
                            	;
             break;
 		        case 4:
-                           	;
+                            while ( itPedais.hasNext() ) {
+                                System.out.println(itPedais.next());
+                            }
             break;
-				case 0:
+				case 5:
             break;
 				default:
             System.out.println("Opção Inválida!");
@@ -106,7 +104,7 @@ public class Ciclistas implements Imprimivel{
 			System.out.println("          A - Creditar        "); 
 			System.out.println("          B - Pedalar      ");
 			System.out.println("          C - Transferir    ");
-			System.out.println("          D - Gerar relatório      ");
+			System.out.println("          D - Gerar relat�rio      ");
 			System.out.println("          E - Retornar ao menu anterior ");
 			System.out.println("          ========================================\n");			
                 Scanner scan2 = new Scanner(System.in);

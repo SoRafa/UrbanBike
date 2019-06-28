@@ -3,23 +3,23 @@ package urbanbike;
 public class PedalPremium extends ContaUrbanBike implements Imprimivel{
 	private double limite = -100;
 	
-	  public double getLimite(){
-		 return this.limite;
+	public double getLimite(){
+		return this.limite;
 	  	}
 		   
-	  public void setLimite(int limite){
-		  this.limite = limite;
+	public void setLimite(int limite){
+		this.limite = limite;
 	  	}
-
-	  public void mostraDados() {
-			 System.out.println("Número da conta: " +getConta()); 
-			 System.out.println("Valor na carteira: " +getCarteira()); 
-	  	}
+        @Override
+	public void mostraDados() {
+		System.out.println("NÃºmero da conta: " +getConta()); 
+		System.out.println("Valor na carteira: " +getCarteira()); 
+	}
 
 	@Override
 	public double depositarCredito(double saldo) {
-    	this.carteira += saldo;
-      	return this.carteira; 
+            this.carteira += saldo;
+            return this.carteira; 
 	}
 
 	@Override

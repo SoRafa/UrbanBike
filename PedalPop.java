@@ -2,7 +2,7 @@ package urbanbike;
 
 public class PedalPop extends ContaUrbanBike implements Imprimivel{
 	private int taxaDeOperacao;
-	
+        
 	  public int getTaxa(){
 		 return this.taxaDeOperacao;
 	  	}
@@ -11,15 +11,16 @@ public class PedalPop extends ContaUrbanBike implements Imprimivel{
 		  this.taxaDeOperacao = Taxa;
 	  	}
 	  
+        @Override
 	  public void mostraDados() {
-		 System.out.println("Número da conta: " + getConta()); 
+		 System.out.println("NÃºmero da conta: " + getConta()); 
 		 System.out.println("Valor na carteira: " + getCarteira()); 
 	  	}
 
 	@Override
 	public double depositarCredito(double saldo) {
-		this.carteira += saldo;
-      	this.carteira -= taxaDeOperacao;
+        this.carteira += saldo;
+        this.carteira -= taxaDeOperacao;
       	return this.carteira; 
 	}
 
