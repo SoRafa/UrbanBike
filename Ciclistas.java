@@ -1,59 +1,70 @@
 package urbanbike;
 import java.util.Scanner;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class Ciclistas implements Imprimivel{
 	
     ArrayList<ContaUrbanBike> listaPedais = new ArrayList<>();
-    Iterator<ContaUrbanBike> itPedais = listaPedais.iterator();
     Scanner scan = new Scanner(System.in);
-    int numero = 0;
+    Scanner scanMenu = new Scanner(System.in);
+
+    int numero = 0, i = 0;
     double saldo = 0;
+
     
     public void inserir(){
         System.out.println("Digite o tipo de conta que deseja criar: 1 - PedalPop\t 2 - PedalPremium");
         numero = Integer.parseInt(scan.nextLine());
+        
         if(numero == 1){
-           PedalPop Pedal = new PedalPop();
-           System.out.println("Digite a quantidade que deseja depositar:");
-           saldo = scan.nextDouble();
-           Pedal.setCarteira(saldo);
-           int i = 0; i++;
-           Pedal.setConta(i);
-           listaPedais.add(Pedal);
+        	PedalPop Pedal = new PedalPop();
+        	listaPedais.add(Pedal);
+        	//dinheiro investido
+        	System.out.println("Digite a quantidade que deseja depositar:");
+        	saldo = Double.parseDouble(scan.nextLine());
+        	Pedal.setCarteira(saldo);
+        	//número da conta
+        	i++;
+        	Pedal.setConta(i);
+            System.out.println(""+i);
+        	numero =0;
         }
         else if(numero == 2){
            PedalPremium Pedal = new PedalPremium();
+           listaPedais.add(Pedal);
+           //dinheiro investido
            System.out.println("Digite a quantidade que deseja depositar: (minimo de "+ Pedal.getLimite()+"reais)");
            saldo = scan.nextDouble();
            Pedal.setCarteira(saldo);
-           int i = 0; i++;
+           //número da conta
+           i++;
            Pedal.setConta(i);
-           listaPedais.add(Pedal);
+           numero =0;
         }else{
             System.out.println("Opção inválida"); 
         }
     }
 
     public void remover(int num){
-	while ( itPedais.hasNext() ) {                              
-            System.out.println(itPedais.next().getConta());
-            if( itPedais.next().getConta() == num) {
-                listaPedais.remove(itPedais.next());
-                }
-            }
+    	int d = 0;
+    	while  (d < listaPedais.size() ) {
+            if(listaPedais.get(d).getConta() == num)
+            	 listaPedais.remove(d);
+            d++;
+    		}
         }
 
 	public ContaUrbanBike procurarPedal(int num){
-		while ( itPedais.hasNext() ) {				//laço para pesquisar 
-			if( itPedais.next().getConta() == numero) {
-                            System.out.println(itPedais.next().getConta());
-                            return itPedais.next();
-                        }
-                    }
-        return null;    }
-	
+    	int d = 0;
+    	while  (d < listaPedais.size() ) {
+            if(listaPedais.get(d).getConta() == num)
+            	System.out.println(listaPedais.get(d).getConta());
+            System.out.println(listaPedais.get(d).getCarteira());
+            	d++;
+            	return null;
+    		}
+        return null;
+        }
 	@Override
 	public void mostraDados() {
 			
@@ -65,12 +76,12 @@ public class Ciclistas implements Imprimivel{
 			System.out.println("\n         ========================================");
 			System.out.println("          1 - Criar pedal        "); 
 			System.out.println("          2 - Remover Pedal      ");
-			System.out.println("          3 - Gerar relat�rio    ");
+			System.out.println("          3 - Gerar relatório    ");
 			System.out.println("          4 - Selecionar Pedal      ");
 			System.out.println("          5 - Finalizar ");
 			System.out.println("          ========================================\n");			
-                            Scanner scan1 = new Scanner(System.in);
-                            opcao = scan1.nextInt();
+				Scanner scanMenu = new Scanner(System.in);
+				opcao = Integer.parseInt(scanMenu.nextLine());
 			switch (opcao) {
 			case 1:
                             inserir(); 
@@ -80,13 +91,19 @@ public class Ciclistas implements Imprimivel{
                             remover(numero);
 			break;
 		        case 3:
-                        numero = Integer.parseInt(scan.nextLine()); 
-                           	;
+                        numero = scan.nextInt(); ;
             break;
 		        case 4:
-                            while ( itPedais.hasNext() ) {
-                                System.out.println(itPedais.next());
+		        	if (listaPedais.isEmpty()== true) {
+		        		System.out.println("A lista está vazia!");
+		        	}else {
+		        		int d= 0;
+                            while  (d < listaPedais.size() ) {
+                                System.out.println(listaPedais.get(d).getCarteira());
+                                System.out.println(listaPedais.get(d).getConta());
+                                d++;
                             }
+		        		}
             break;
 				case 5:
             break;
@@ -104,11 +121,10 @@ public class Ciclistas implements Imprimivel{
 			System.out.println("          A - Creditar        "); 
 			System.out.println("          B - Pedalar      ");
 			System.out.println("          C - Transferir    ");
-			System.out.println("          D - Gerar relat�rio      ");
+			System.out.println("          D - Gerar relatório      ");
 			System.out.println("          E - Retornar ao menu anterior ");
 			System.out.println("          ========================================\n");			
-                Scanner scan2 = new Scanner(System.in);
-            	opcao = Integer.parseInt(scan2.nextLine());
+            	opcao = Integer.parseInt(scanMenu.nextLine());
 			switch (opcao) {
 			case 1:
                             ;
@@ -125,7 +141,7 @@ public class Ciclistas implements Imprimivel{
 				case 0:
             break;
 				default:
-            System.out.println("Opção Inválida!");
+            System.out.println("Opção inválida!");
             break;
             }
         } while (opcao != 0);
