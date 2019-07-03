@@ -10,9 +10,10 @@ public class PedalPremium extends ContaUrbanBike implements Imprimivel{
 	public void setLimite(int limite){
 		this.limite = limite;
 	  	}
-        @Override
+	
+    @Override
 	public void mostraDados() {
-		System.out.println("NÃºmero da conta: " +getConta()); 
+		System.out.println("Número da conta: " +getConta()); 
 		System.out.println("Valor na carteira: " +getCarteira()); 
 	}
 
@@ -23,12 +24,13 @@ public class PedalPremium extends ContaUrbanBike implements Imprimivel{
 	}
 
 	@Override
-	public double gastarCredito(double saldo) {
-		if(this.carteira <= limite){
-			System.out.println("saldo insuficiente, voce tem " + this.carteira + " de credito");
+	public double gastarCredito(double km) {
+		km = (km * 0.5);
+		if((getCarteira()-km) < limite ){
+			System.out.println("saldo insuficiente, voce tem " + (this.carteira) + " de credito com o limite de 100");
 	        return 0;
 	      }else{
-	      	this.carteira -= saldo;
+	      	this.carteira -= km;
 	        return this.carteira;
 	      }
 	}
