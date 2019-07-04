@@ -13,9 +13,11 @@ public class PedalPop extends ContaUrbanBike implements Imprimivel{
 	  
     @Override
 	public void mostraDados() {
-		 System.out.println("Número da conta: " + getConta()); 
-		 System.out.println("Valor na carteira: " + getCarteira()); 
-		 System.out.println("Valor na carteira: " + getCarteira()); 
+    	System.out.println("         ========================================");
+		System.out.println("		  Número da conta: " + getConta()); 
+		System.out.println("		  Valor na carteira: " + getCarteira()); 
+		System.out.println("		  Tipo de conta: " + getTipoDeConta()); 
+	    System.out.println("          ========================================");
     }
 
     @Override
@@ -27,7 +29,7 @@ public class PedalPop extends ContaUrbanBike implements Imprimivel{
 	}
 
 	@Override
-	public double gastarCredito(double km) { // 1 kilometro == R$0.50 centavos
+	public double gastarCredito(double km) { // 1 kilometro = R$0.50 centavos
 		km = (km * 0.5);
     	taxaDeOperacao = (km * 0.10);
 		if(this.carteira < km + taxaDeOperacao){

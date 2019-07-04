@@ -52,7 +52,7 @@ public class Ciclistas extends Relatorio implements Imprimivel{
     }
 
     
-    public void remover(int cod){ //Remover um pedal da ArrayList pelo número da conta
+    public void remover(int cod){ //Remover um pedal da ArrayList pelo código/número da conta
     	int d = 0;
     	while  (d < listaPedais.size() ) {
             if(listaPedais.get(d).getConta() == cod)
@@ -105,7 +105,7 @@ public class Ciclistas extends Relatorio implements Imprimivel{
 				inserir(); 
 				break;
 				
-			case 2:
+			case 2: //remover
 	        	if (listaPedais.isEmpty() == true) {
 	        		System.out.println("A lista está vazia!");
 		    		break;	}
@@ -114,14 +114,14 @@ public class Ciclistas extends Relatorio implements Imprimivel{
                 remover(numero);
                 break;
                 
-		    case 3:
+		    case 3: //mostrar lista
 	        	if (listaPedais.isEmpty() == true) {
 	        		System.out.println("A lista está vazia!");
 	        		break;	}
 		    	gerarRelatorio(listaPedais);
 		    	break;
 		    	
-		    case 4:
+		    case 4: //selecionar pedal
 	        	if (listaPedais.isEmpty() == true) {
 	        		System.out.println("A lista está vazia!");
 	        		break;	}
@@ -130,7 +130,7 @@ public class Ciclistas extends Relatorio implements Imprimivel{
 		    	procurarPedal(numero);
 		    	break;
 		    	
-			case 5:
+			case 5://sair do programa
 				System.exit(1);
 				break;
 				
@@ -141,7 +141,7 @@ public class Ciclistas extends Relatorio implements Imprimivel{
         } while (opcao != 0);
     }
 	
-	public boolean transferir(int cod,double valor) {
+	public boolean transferir(int cod,double valor) { // Método para transferir para a outra conta
 		for(ContaUrbanBike p2 : listaPedais) {
 			if(p2.getConta() == cod ) {
 				valor = valor + p2.getCarteira();
@@ -168,19 +168,19 @@ public class Ciclistas extends Relatorio implements Imprimivel{
 			Scanner scanMenu = new Scanner(System.in);
 			opcao = Integer.parseInt(scanMenu.nextLine());
 			switch (opcao) {
-				case 1:
+				case 1: //Creditar
 					System.out.println("Digite o valor que deseja depositar:");
 					credito = Double.parseDouble(scan.nextLine());
 					p.depositarCredito(credito);
 				break;
 				
-				case 2:
+				case 2: //Pedalar
 					System.out.println("Digite a quantidade de quilometros estimada:");
 					credito = Double.parseDouble(scan.nextLine());
 					p.gastarCredito(credito);
                 break;
                 
-		        case 3:
+		        case 3: //transferir
 		        	System.out.println("Digite o quanto deseja tranferir:");
 			        System.out.println("Você tem: " + p.getCarteira());
 					credito = Double.parseDouble(scan.nextLine());
@@ -197,10 +197,9 @@ public class Ciclistas extends Relatorio implements Imprimivel{
 			        			System.out.println("Número de conta não existe!");
 			        		}
 			        }
-
                 break;
                 
-		        case 4:
+		        case 4: //relatório
 		        	System.out.println("          ========================================");
 		        	System.out.println("          Número da conta: " + p.getConta());
 		        	System.out.println("          Tipo da conta: " + p.getTipoDeConta());
@@ -208,7 +207,7 @@ public class Ciclistas extends Relatorio implements Imprimivel{
 		        	System.out.println("          ========================================");
                 break;
                 
-		        case 5:
+		        case 5: //volta pro menu
 		        	menu();
                 break;
                 
@@ -219,5 +218,3 @@ public class Ciclistas extends Relatorio implements Imprimivel{
         } while (opcao != 0);
     }
 }
-
-
