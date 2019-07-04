@@ -18,8 +18,8 @@ public class Ciclistas extends Relatorio implements Imprimivel{
         if(numero == 1){
         	PedalPop pPop = new PedalPop();
         	listaPedais.add(pPop);
-        	//dinheiro investido
-        	System.out.println("Digite a quantidade que deseja depositar:");
+        	//dinheiro creditado
+        	System.out.println("Digite a quantidade inicial que deseja depositar:");
         	creditoInicial = Double.parseDouble(scan.nextLine());
         	pPop.setCarteira(creditoInicial);
         	//número da conta
@@ -29,13 +29,15 @@ public class Ciclistas extends Relatorio implements Imprimivel{
         	pPop.setTipoDeConta("PedalPop");
             System.out.println("Pedal Adicionado com Sucesso! O número da sua conta é: "+ i);
             numero = 0;
-        }
-        else if(numero == 2){
+        }else if (numero == 2){
+           System.out.println("Digite a quantidade inicial que deseja depositar: (minimo de R$100 reais)");
+           creditoInicial = Double.parseDouble(scan.nextLine());
+           if(creditoInicial < 100) {
+        	   System.out.println("Quantidade creditada menor que R$100 reais!");
+        	   return;}
            PedalPremium pPremium = new PedalPremium();
            listaPedais.add(pPremium);
-           //dinheiro investido
-           System.out.println("Digite a quantidade que deseja depositar: (minimo de 100 reais)");
-           creditoInicial = Double.parseDouble(scan.nextLine());
+           //dinheiro creditado
            pPremium.setCarteira(creditoInicial);
            //número da conta
            i++;
@@ -44,7 +46,7 @@ public class Ciclistas extends Relatorio implements Imprimivel{
            pPremium.setTipoDeConta("PedalPremium");
            System.out.println("Pedal Adicionado com Sucesso! O número da sua conta é: "+ i);
            numero = 0;
-        }else{
+        }else {
             System.out.println("Opção inválida"); 
         }
     }
