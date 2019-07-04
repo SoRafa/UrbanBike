@@ -141,9 +141,22 @@ public class Ciclistas extends Relatorio implements Imprimivel{
         } while (opcao != 0);
     }
 	
+	public boolean transferir(int cod,double valor) {
+		for(ContaUrbanBike p2 : listaPedais) {
+			if(p2.getConta() == cod ) {
+				valor = valor + p2.getCarteira();
+				p2.setCarteira(valor);
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	
 	public void menu2(ContaUrbanBike p) { // Menu da opção 4
 		int opcao = 0;
 		double credito = 0;
+        int cod = 0;
 		do {
 			System.out.println("\n         ========================================");
 			System.out.println("          1 - Creditar        "); 
@@ -168,13 +181,31 @@ public class Ciclistas extends Relatorio implements Imprimivel{
                 break;
                 
 		        case 3:
-		        	
+		        	System.out.println("Digite o quanto deseja tranferir:");
+			        System.out.println("Você tem: " + p.getCarteira());
+					credito = Double.parseDouble(scan.nextLine());
+			        if(p.getCarteira() < credito) {
+			        	System.out.println("Saldo insuficiente!");
+			        }else{
+			        	System.out.println("Digite o código da conta que você quer transferir:");
+			        	cod = Integer.parseInt(scan.nextLine());
+			        	if(transferir (cod, credito) == true) {
+			        		credito = p.getCarteira() - credito;
+			        		System.out.println("Saldo após Transferência: "+ credito);
+			        		p.setCarteira(credito);
+			        		}else{
+			        			System.out.println("Número de conta não existe!");
+			        		}
+			        }
+
                 break;
                 
 		        case 4:
+		        	System.out.println("          ========================================");
 		        	System.out.println("          Número da conta: " + p.getConta());
 		        	System.out.println("          Tipo da conta: " + p.getTipoDeConta());
 		        	System.out.println("          Valor na carteira: R$" + p.getCarteira());
+		        	System.out.println("          ========================================");
                 break;
                 
 		        case 5:
@@ -188,3 +219,5 @@ public class Ciclistas extends Relatorio implements Imprimivel{
         } while (opcao != 0);
     }
 }
+
+

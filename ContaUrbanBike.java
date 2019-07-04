@@ -30,8 +30,4 @@ public abstract class ContaUrbanBike {
 	public void setTipoDeConta(String tipoDeConta) {
 		this.tipoDeConta = tipoDeConta;
 	}
-	
-	public void transferir(double valor, ContaUrbanBike C){
-		
-	}
 }
